@@ -2,6 +2,9 @@ package com.example.bmicalculator;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -161,4 +164,28 @@ public class MainActivity extends AppCompatActivity {
         bmiword.setText("");
         twr.setText("");
     }
+
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setIcon(R.drawable.ic_baseline_exit_to_app_24)
+                .setTitle("Are you sure you Want to Exit ?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set what would happen when positive button is clicked
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getApplicationContext(),"Okay :)",Toast.LENGTH_LONG).show();
+                    }
+                })
+                .show();
+    } // On Back Pressed
+
+
 }
